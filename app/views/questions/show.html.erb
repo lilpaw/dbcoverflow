@@ -1,0 +1,28 @@
+<h1>Question</h1>
+<%=@question.votecount %>
+<%= button_to 'VoteUp', upvote_question_path, method: :put %>
+<%= button_to 'VoteDown', downvote_question_path, method: :put %>
+<strong><%= @question.title %></strong>
+<%= @question.content %>
+<%= button_to 'Destroy', question_path(@question),
+             :method => :delete %>
+<%= link_to 'Edit', edit_question_path(@question), :method => :get %>
+
+<h2>Answers</h2>
+<% @question.answers.reverse.each do |answer| %>
+  Votes: <%= answer.votecount %>
+  <%= button_to 'VoteUp', answer_upvote_path(answer_id: answer.id), method: :put  %>
+  <%= button_to 'VoteDown', answer_downvote_path(answer_id: answer.id), method: :put %>
+  <strong><%= answer.title %></strong> <%= answer.content %><br />
+<% end %>
+
+<h2>New Answer Form</h2>
+<%= form_for @answer, url: answers_path(@question) do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
+
+  <%= f.label :content %>:
+  <%= f.text_field :content %><br />
+
+  <%= f.submit %>
+<% end %>

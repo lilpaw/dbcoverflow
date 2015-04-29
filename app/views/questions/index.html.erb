@@ -1,0 +1,19 @@
+<%= form_for @question do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
+
+  <%= f.label :content %>:
+  <%= f.text_field :content %><br />
+
+  <%= f.submit %>
+<% end %>
+
+<ul>
+<% @questions.reverse.each do |question| %>
+<li>
+  <%= question.votecount %>
+  <strong><%= link_to(question) do %>
+  <%= question.title %></strong><% end %> | <%= question.content%></li>
+<% end %>
+</ul>
+

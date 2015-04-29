@@ -1,0 +1,39 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+most current ruby version
+Rails 4.1.6
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+Postgresql
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+Create a Stack Overflow clone application using Rails.
+- List questions
+- Link to questions with answers
+- Vote up and down for questions
+- Vote up and down for answers
+- Show tags for questions
+- User login/logout
+  - Create questions
+  - Answer questions
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
