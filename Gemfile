@@ -22,7 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-
+gem 'httparty'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring'
 group :development, :test do
@@ -32,6 +32,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'faker'
   gem 'simplecov', :require => false
+  gem 'dotenv-rails'
 end
 
 

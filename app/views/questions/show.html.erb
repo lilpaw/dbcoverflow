@@ -1,8 +1,8 @@
 <h1>Question</h1>
-<%=@question.votecount %>
+Votes: <%=@question.votecount %>
 <%= button_to 'VoteUp', upvote_question_path, method: :put %>
 <%= button_to 'VoteDown', downvote_question_path, method: :put %>
-<strong><%= @question.title %></strong>
+<strong><%= @question.title %>:</strong>
 <%= @question.content %>
 <%= button_to 'Destroy', question_path(@question),
              :method => :delete %>
@@ -13,7 +13,7 @@
   Votes: <%= answer.votecount %>
   <%= button_to 'VoteUp', answer_upvote_path(answer_id: answer.id), method: :put  %>
   <%= button_to 'VoteDown', answer_downvote_path(answer_id: answer.id), method: :put %>
-  <strong><%= answer.title %></strong> <%= answer.content %><br />
+  <strong><%= answer.title %>:</strong> <%= answer.content %><br />
 <% end %>
 
 <h2>New Answer Form</h2>

@@ -3,6 +3,13 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     @question = Question.new
+    @api_client = GithubAdapter.new
+    @response = @api_client.zen.parsed_response
+    if @response
+      @response
+    else
+      @response = "Music is the emotional life of most people."
+    end
   end
 
   # get 'questions/:id'
