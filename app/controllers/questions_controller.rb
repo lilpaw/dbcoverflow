@@ -24,30 +24,30 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
   end
 
-  def create
-    question = Question.new(question_params)
-    if question.save
-      redirect_to root_path
-    else
-      status 406
-      render :index
-    end
-  end
-
   # def create
-  #   @question = Question.new(question_params)
-
-  #     if @question.save
-  #     respond_to do |format|
-  #       # format.json { render json: @question.to_json }
-  #       format.html{redirect_to root_path}
-  #     end
-  #     else
-  #       status 406
-  #       render :index
-  #     end
-
+  #   question = Question.new(question_params)
+  #   if question.save
+  #     redirect_to root_path
+  #   else
+  #     status 406
+  #     render :index
+  #   end
   # end
+
+  def create
+    @question = Question.new(question_params)
+
+      if @question.save
+      respond_to do |format|
+        format.json { render json: @question.to_json }
+        format.html{redirect_to root_path}
+      end
+      else
+        status 406
+        render :index
+      end
+
+  end
 
 
   def destroy
