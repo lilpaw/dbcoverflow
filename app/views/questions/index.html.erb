@@ -1,24 +1,27 @@
 <h1>DBC OVERFLOW</h1>
 
 <p><strong>Quote of the Moment:</strong> <%=@response%></p>
+<div class="new-question-form">
+  <%= form_for @question do |f| %>
+    <%= f.label :title %>:
+    <%= f.text_field :title %><br />
 
-<%= form_for @question do |f| %>
-  <%= f.label :title %>:
-  <%= f.text_field :title %><br />
+    <%= f.label :content %>:
+    <%= f.text_field :content %><br />
 
-  <%= f.label :content %>:
-  <%= f.text_field :content %><br />
+    <%= f.submit %>
+  <% end %>
+</div>
 
-  <%= f.submit %>
-<% end %>
-
-<ul>
-<% @questions.reverse.each do |question| %>
-<li>
-  Votes:<%= question.votecount %>
-  Answers:<%= question.answers.count%>
-  <strong><%= link_to(question) do %>
-  <%= question.title %></strong><% end %> | <%= question.content%></li>
-<% end %>
-</ul>
+<div class="question-list">
+  <ul>
+  <% @questions.reverse.each do |question| %>
+  <li class="questions">
+    Votes:<span class="votecount"><%= question.votecount %></span>
+    Answers:<span class="answerscount"><%= question.answers.count%></span>
+    <strong><%= link_to(question) do %>
+    <span class="ques-title"><%= question.title %></span></strong><% end %> | <span class="ques-content"><%=   question.content%></span></li>
+  <% end %>
+  </ul>
+</div>
 

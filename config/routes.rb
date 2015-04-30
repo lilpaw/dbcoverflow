@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     member do
       put 'upvote'
       put 'downvote'
-      resources :answers do
+    end
+    resources :answers do
+      member do
         put 'upvote'
         put 'downvote'
       end

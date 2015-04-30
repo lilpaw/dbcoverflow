@@ -11,13 +11,13 @@ Votes: <%=@question.votecount %>
 <h2>Answers</h2>
 <% @question.answers.reverse.each do |answer| %>
   Votes: <%= answer.votecount %>
-  <%= button_to 'VoteUp', answer_upvote_path(answer_id: answer.id), method: :put  %>
-  <%= button_to 'VoteDown', answer_downvote_path(answer_id: answer.id), method: :put %>
+  <%= button_to 'VoteUp', upvote_question_answer_path(@question, answer), method: :put  %>
+  <%= button_to 'VoteDown', downvote_question_answer_path(@question, answer), method: :put %>
   <strong><%= answer.title %>:</strong> <%= answer.content %><br />
 <% end %>
 
 <h2>New Answer Form</h2>
-<%= form_for @answer, url: answers_path(@question) do |f| %>
+<%= form_for [@question, @answer] do |f| %>
   <%= f.label :title %>:
   <%= f.text_field :title %><br />
 
