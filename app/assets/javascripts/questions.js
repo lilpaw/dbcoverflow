@@ -25,6 +25,8 @@ $(document).ready(function() {
         .find('.ques-content')
         .text(response.content)
         .end()
+
+        document.getElementById("new_question").reset();
     });
   });
 });
