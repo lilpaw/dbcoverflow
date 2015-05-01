@@ -8,21 +8,27 @@ Votes: <%=@question.votecount %>
              :method => :delete %>
 <%= link_to 'Edit', edit_question_path(@question), :method => :get %>
 
+<div class="answer-list">
 <h2>Answers</h2>
 <% @question.answers.reverse.each do |answer| %>
-  Votes: <%= answer.votecount %>
-  <%= button_to 'VoteUp', upvote_question_answer_path(@question, answer), method: :put  %>
-  <%= button_to 'VoteDown', downvote_question_answer_path(@question, answer), method: :put %>
-  <strong><%= answer.title %>:</strong> <%= answer.content %><br />
+<div class="answers">
+  Votes: <span class="ans-votecount"><%= answer.votecount %></span>
+  <div class="votebutton"><%= button_to 'VoteUp', upvote_question_answer_path(@question, answer), method: :put  %></div>
+  <div class="votebutton"><%= button_to 'VoteDown', downvote_question_answer_path(@question, answer), method: :put %></div>
+  <span class="ans-title"><strong><%= answer.title %></span>:</strong> <span class="ans-content"><%= answer.content %></span><br />
+</div>
 <% end %>
+</div>
 
 <h2>New Answer Form</h2>
-<%= form_for [@question, @answer] do |f| %>
-  <%= f.label :title %>:
-  <%= f.text_field :title %><br />
+<div class="new-answer-form">
+  <%= form_for [@question, @answer] do |f| %>
+    <%= f.label :title %>:
+    <%= f.text_field :title %><br />
 
-  <%= f.label :content %>:
-  <%= f.text_field :content %><br />
+    <%= f.label :content %>:
+    <%= f.text_field :content %><br />
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
+</div>

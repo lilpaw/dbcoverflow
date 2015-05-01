@@ -1,16 +1,34 @@
 class AnswersController < ApplicationController
 
+  # def create
+  #   @question = Question.where(id: params[:question_id]).first
+  #   if Answer.create(question_id: params[:question_id],
+  #     title: params[:answer][:title],
+  #     content: params[:answer][:content])
+
+  #     redirect_to question_path(@question)
+  #   else
+  #     status 401
+  #     redirect_to question_path(@question)
+  #   end
+  # end
+
   def create
     @question = Question.where(id: params[:question_id]).first
-    if Answer.create(question_id: params[:question_id],
-      title: params[:answer][:title],
-      content: params[:answer][:content])
+    @answer = Answer.new(
+       question_id: params[:question_id],
+       title: params[:answer][:title],
+       content: params[:answer][:content])
 
-      redirect_to question_path(@question)
-    else
-      status 401
-      redirect_to question_path(@question)
-    end
+      if @answer.save
+        respond_to do |format|
+          format.json { render json: @answer.to_json }
+          format.html{ redirect_to question_path(@question)}
+        end
+      else
+        status 406
+        render :show
+      end
   end
 
   def upvote
