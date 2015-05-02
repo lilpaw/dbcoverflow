@@ -36,7 +36,10 @@ class AnswersController < ApplicationController
     @answer = Answer.where(id: params[:id]).first
     @answer.votecount += 1
     @answer.save
-    redirect_to question_path(@question.id)
+    respond_to do |format|
+      format.json { render json: @answer.to_json }
+      format.html { redirect_to question_path(@question)}
+    end
   end
 
   def downvote
@@ -44,6 +47,10 @@ class AnswersController < ApplicationController
     @answer = Answer.where(id: params[:id]).first
     @answer.votecount -= 1
     @answer.save
-    redirect_to question_path(@question.id)
+    respond_to do |format|
+      format.json { render json: @answer.to_json }
+      format.html { redirect_to question_path(@question)}
+    end
   end
+
 end

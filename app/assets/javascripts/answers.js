@@ -11,7 +11,6 @@ $(document).ready(function() {
     });
 
     new_answer_request.done(function(response){
-      console.log(response);
 
       var newAnswer = $('.answers:first').clone()
       newAnswer.appendTo('.answer-list')
@@ -27,6 +26,24 @@ $(document).ready(function() {
         .end()
 
         document.getElementById("new_answer").reset();
+    })
+  })
+
+  $('.button_to').on('click', function(event){
+    event.preventDefault();
+
+    var closestVotecount = $(this).parent('.votebutton').siblings('.ans-votecount')
+    var voteRequest = $.ajax({
+      url: $(this).attr('action'),
+      type: 'PUT',
     });
-  });
+
+    voteRequest.done(function(response){
+      closestVotecount.text(response.votecount);
+    })
+    voteRequest.fail(function(response){
+      alert("ajax FAILURE");
+    })
+  })
+
 });
