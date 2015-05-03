@@ -1,5 +1,6 @@
 <h1>Question</h1>
-Votes: <%=@question.votecount %>
+<div class="question">
+Votes: <span class="ques-votecount"><%=@question.votecount %></span>
 <%= button_to 'VoteUp', upvote_question_path, method: :put %>
 <%= button_to 'VoteDown', downvote_question_path, method: :put %>
 <strong><%= @question.title %>:</strong>
@@ -7,6 +8,7 @@ Votes: <%=@question.votecount %>
 <%= button_to 'Destroy', question_path(@question),
              :method => :delete %>
 <%= link_to 'Edit', edit_question_path(@question), :method => :get %>
+</div>
 
 <div class="answer-list">
 <h2>Answers</h2>

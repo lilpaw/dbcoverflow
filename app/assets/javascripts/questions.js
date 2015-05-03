@@ -29,4 +29,22 @@ $(document).ready(function() {
         document.getElementById("new_question").reset();
     });
   });
+
+  $('.question').on('click', '.button_to', function(event){
+    event.preventDefault();
+
+    var voteRequest = $.ajax({
+      url: $(this).attr('action'),
+      type: 'PUT',
+    });
+
+    voteRequest.done(function(response){
+
+      $('.ques-votecount').text(response.votecount);
+    })
+    voteRequest.fail(function(response){
+      alert("ajax FAILURE");
+    })
+  })
+
 });

@@ -74,14 +74,20 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.votecount += 1
     @question.save
-    redirect_to question_path(@question.id)
+    respond_to do |format|
+      format.json { render json: @question.to_json }
+      # format.html { redirect_to question_path(@question)}
+    end
   end
 
   def downvote
     @question = Question.find(params[:id])
     @question.votecount -= 1
     @question.save
-    redirect_to question_path(@question.id)
+    respond_to do |format|
+      format.json { render json: @question.to_json }
+      # format.html { redirect_to question_path(@question)}
+    end
   end
 
   private
