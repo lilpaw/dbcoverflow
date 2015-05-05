@@ -1,14 +1,14 @@
 <h1>Question</h1>
-<div class="question">
-Votes: <span class="ques-votecount"><%=@question.votecount %></span>
-<%= button_to 'VoteUp', upvote_question_path, method: :put %>
-<%= button_to 'VoteDown', downvote_question_path, method: :put %>
-<strong><%= @question.title %>:</strong>
-<%= @question.content %>
-<%= button_to 'Destroy', question_path(@question),
-             :method => :delete %>
-<%= link_to 'Edit', edit_question_path(@question), :method => :get %>
-</div>
+  <div class="question-detail">
+    Votes: <span class="ques-votecount"><%=@question.votecount %></span>
+    <%= button_to 'VoteUp', upvote_question_path, form: {id: 'ques-votebutton'}, method: :put %>
+    <%= button_to 'VoteDown', downvote_question_path, form: { id: 'ques-votebutton'}, method: :put %>
+    <strong><%= @question.title %>:</strong>
+    <%= @question.content %>
+    <%= button_to 'Destroy', question_path(@question), :method => :delete %>
+    <%= link_to 'Edit', edit_question_path(@question), :method => :get %>
+  </div>
+
 
 <div class="answer-list">
 <h2>Answers</h2>

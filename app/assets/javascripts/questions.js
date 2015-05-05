@@ -30,16 +30,16 @@ $(document).ready(function() {
     });
   });
 
-  $('.question').on('click', '.button_to', function(event){
+  $('.question-detail').on('click','#ques-votebutton', function(event){
     event.preventDefault();
-
+    debugger
     var voteRequest = $.ajax({
       url: $(this).attr('action'),
       type: 'PUT',
     });
 
     voteRequest.done(function(response){
-
+      debugger
       $('.ques-votecount').text(response.votecount);
     })
     voteRequest.fail(function(response){

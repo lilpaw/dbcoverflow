@@ -29,7 +29,7 @@ $(document).ready(function() {
     })
   })
 
-  $('.button_to').on('click', function(event){
+  $('.answers .button_to').on('click', function(event){
     event.preventDefault();
 
     var closestVotecount = $(this).parent('.votebutton').siblings('.ans-votecount')
