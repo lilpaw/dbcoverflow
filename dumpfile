@@ -1,0 +1,5 @@
+pseudocode release 4
+
+?
+?create a class for the random quotes
+?include HTTParty with base uri: https://api.github.com/zen
