@@ -16,7 +16,8 @@
 
 <div class="question-list">
   <ul>
-  <% @questions.reverse.each do |question| %>
+  <% ques = @questions.sort_by {|question| question.votecount} %>
+  <% ques.reverse.each do |question| %>
   <li class="questions">
     Votes:<span class="votecount"><%= question.votecount %></span>
     Answers:<span class="answerscount"><%= question.answers.count%></span>

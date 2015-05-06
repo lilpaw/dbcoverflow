@@ -12,7 +12,8 @@
 
 <div class="answer-list">
   <h2>Answers</h2>
-  <% @question.answers.reverse.each do |answer| %>
+  <% ques_ans = @question.answers.sort_by {|answer| answer.votecount} %>
+  <% ques_ans.reverse.each do |answer| %>
   <div class="answers">
     Votes: <span class="ans-votecount"><%= answer.votecount %></span>
     <div class="votebutton"><%= button_to 'VoteUp', upvote_question_answer_path(@question, answer), method: :put  %></div>
